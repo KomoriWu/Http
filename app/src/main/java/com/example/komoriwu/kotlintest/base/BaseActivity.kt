@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import com.example.komoriwu.kotlintest.R
-import com.example.komoriwu.kotlintest.R.id.tv_toolbar_title
 import org.jetbrains.anko.find
 
 /**
@@ -18,6 +17,7 @@ abstract class BaseActivity(var layoutId: Int) : AppCompatActivity() {
         setContentView(layoutId)
         initView()
         initData()
+        initListener()
 
     }
 
@@ -25,9 +25,13 @@ abstract class BaseActivity(var layoutId: Int) : AppCompatActivity() {
 
     }
 
-    open fun initToolbar(isShowBackBar: Boolean = true, text: Int = null!!) {
+    open fun initListener() {
+
+    }
+
+    open fun initToolbar(text: Int=R.string.no_title, isShowBackBar: Boolean = true) {
         val toolbar: Toolbar? = find(R.id.toolbar)
-        va tvTitle: TextView? = find(R.id.tv_toolbar_title)
+        val tvTitle: TextView? = find(R.id.tv_toolbar_title)
 
         toolbar?.let {
             setSupportActionBar(toolbar)
@@ -37,7 +41,6 @@ abstract class BaseActivity(var layoutId: Int) : AppCompatActivity() {
                 actionBar.setDisplayShowTitleEnabled(false)
                 toolbar.setNavigationOnClickListener() { onBackPressed() }
             }
-            title = ""
             tvTitle?.text = getString(text)
         }
     }
