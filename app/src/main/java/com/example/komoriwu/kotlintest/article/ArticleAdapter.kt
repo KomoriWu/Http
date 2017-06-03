@@ -1,4 +1,4 @@
-package com.example.komoriwu.kotlintest.article.view
+package com.example.komoriwu.kotlintest.article
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.Adapter
@@ -34,7 +34,7 @@ class ArticleAdapter(private val articleList: MutableList<Article>) :
         fun bindData(article: Article) {
             with(article) {
                 tvTitle.text = title
-                tvContent.text = content
+                tvContent.text = detailContent
             }
         }
     }

@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import com.example.komoriwu.kotlintest.R
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity
 import org.jetbrains.anko.find
 
 /**
  * Created by KomoriWu on 2017/6/1.
  */
-abstract class BaseActivity(var layoutId: Int) : AppCompatActivity() {
+abstract class BaseActivity(var layoutId: Int) : RxAppCompatActivity() {
     abstract fun initData()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
