@@ -2,6 +2,7 @@ package com.example.komoriwu.kotlintest.http.sevice;
 
 
 import com.example.komoriwu.kotlintest.bean.Article;
+import com.example.komoriwu.kotlintest.bean.ArticleBody;
 
 import java.util.Map;
 
@@ -18,5 +19,5 @@ import static com.example.komoriwu.kotlintest.utils.UtilsKt.GET_ALL_ARTICLES;
 
 public interface HttpService {
     @GET(GET_ALL_ARTICLES)
-    Observable<Article> getAllArticles(@QueryMap Map<String, String> map);
+    Observable<ArticleBody> getAllArticles(@QueryMap Map<String, String> map);
 }

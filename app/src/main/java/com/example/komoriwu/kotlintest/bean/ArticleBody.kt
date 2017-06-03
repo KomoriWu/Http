@@ -18,4 +18,9 @@ class ArticleBody {
     var count: Int = 0
     @SerializedName("article")
     var articleArrayList: ArrayList<Article>? = null
+
+    override fun toString(): String {
+        return "ArticleBody(page=$page, size=$size, count=$count, articleArrayList=$articleArrayList)"
+    }
+
 }

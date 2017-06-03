@@ -74,7 +74,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onStart() {
-        Log.d("http url:", mApi.getBaseUrl());
+        Log.d("Http url:", mApi.getBaseUrl());
         showProgressDialog();
     }
 
@@ -88,7 +88,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
         dismissProgressDialog();
         if (mHttpOnNextListener != null) {
             mHttpOnNextListener.onError(e);
-            Log.d("Throwable Message:", e.getMessage());
+            Log.d("Http Throwable Message:", e.getMessage());
             Utils.showAlertDialog(mRxAppCompatActivity, e.getMessage());
         }
     }
@@ -96,7 +96,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
     @Override
     public void onNext(T t) {
         if (mHttpOnNextListener != null) {
-            Log.d("Next:", t.toString());
+            Log.d("Http Next:", t.toString());
             mHttpOnNextListener.onNext(t);
         }
     }
