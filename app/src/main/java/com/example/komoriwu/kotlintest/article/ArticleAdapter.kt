@@ -13,13 +13,18 @@ import org.jetbrains.anko.find
 /**
  * Created by KomoriWu on 2017/6/2.
  */
-class ArticleAdapter(private val articleList: MutableList<Article>) :
-        Adapter<ArticleAdapter.ArticleViewHolder>() {
+class ArticleAdapter : Adapter<ArticleAdapter.ArticleViewHolder>() {
+    private var articleList: MutableList<Article>? = null
 
-    override fun getItemCount(): Int = articleList.size
+    fun addArticleList(articleList: MutableList<Article>) {
+        this.articleList = articleList
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int = articleList!!.size
 
     override fun onBindViewHolder(holder: ArticleViewHolder?, position: Int) {
-        holder?.bindData(articleList[position])
+        articleList?.get(position)?.let { holder?.bindData(it) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, p1: Int): ArticleViewHolder {
@@ -34,7 +39,7 @@ class ArticleAdapter(private val articleList: MutableList<Article>) :
         fun bindData(article: Article) {
             with(article) {
                 tvTitle.text = title
-                tvContent.text = detailContent
+                tvContent.text = briefContent
             }
         }
     }

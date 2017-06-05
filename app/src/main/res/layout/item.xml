@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
+        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:text="item" />
 
@@ -14,7 +15,8 @@
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:maxLines="3"
+        android:ellipsize="end"
         android:layout_below="@+id/tv_title"
         android:text="item" />
 </RelativeLayout>

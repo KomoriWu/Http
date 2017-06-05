@@ -1,5 +1,6 @@
 package com.example.komoriwu.kotlintest.article
 
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.example.komoriwu.kotlintest.R
@@ -24,13 +25,15 @@ class MainActivity : BaseActivity(R.layout.activity_main), ArticleView {
         initToolbar(com.example.komoriwu.kotlintest.R.string.app_name)
         mArticlePresenter = ArticlePresenterImpl(this, this)
         mArticlePresenter?.loaderArticle("1", "8")
-//        mRecyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.
-//                VERTICAL, false)
-//        mRecyclerView?.adapter = mArticleAdapter
+        mRecyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.
+                VERTICAL, false)
+        mArticleAdapter=ArticleAdapter()
+        mRecyclerView?.adapter =  mArticleAdapter
 
     }
 
     override fun addArticleList(articleBody: ArticleBody?) {
+        mArticleAdapter?.addArticleList(articleBody?.articleArrayList!!)
         Log.d("articleBody:", articleBody.toString())
     }
 
