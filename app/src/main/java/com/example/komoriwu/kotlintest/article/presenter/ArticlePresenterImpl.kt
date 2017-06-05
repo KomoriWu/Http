@@ -10,7 +10,7 @@ import com.example.komoriwu.kotlintest.bean.ArticleBody
  * Created by KomoriWu on 2017/6/2.
  */
 class ArticlePresenterImpl(private var mContext: Context,
-                           private var mArticleView: ArticleView?) :
+                           private var mArticleView: ArticleView) :
         ArticlePresenter, ArticleModelImpl.OnLoadListListener {
 
     private var mArticleModel: ArticleModel? = null
@@ -24,7 +24,7 @@ class ArticlePresenterImpl(private var mContext: Context,
     }
 
     override fun onSuccess(t: ArticleBody?) {
-        mArticleView?.addArticleList(t)
+        mArticleView.addArticleList(t)
     }
 
     override fun onFail(e: Throwable?) {

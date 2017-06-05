@@ -6,6 +6,7 @@ import com.example.http.listener.HttpOnNextListener
 import com.example.komoriwu.kotlintest.bean.ArticleBody
 import com.example.komoriwu.kotlintest.http.api.ArticleApi
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity
+import dagger.Module
 
 
 /**

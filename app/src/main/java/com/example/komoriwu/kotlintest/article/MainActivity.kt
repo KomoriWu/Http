@@ -5,17 +5,19 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.example.komoriwu.kotlintest.R
 import com.example.komoriwu.kotlintest.article.presenter.ArticlePresenter
-import com.example.komoriwu.kotlintest.article.presenter.ArticlePresenterImpl
 import com.example.komoriwu.kotlintest.article.view.ArticleView
 import com.example.komoriwu.kotlintest.base.BaseActivity
 import com.example.komoriwu.kotlintest.bean.ArticleBody
+import com.example.komoriwu.kotlintest.component.DaggerArticleComponent
+import com.example.komoriwu.kotlintest.module.ArticleModule
 import org.jetbrains.anko.find
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(R.layout.activity_main), ArticleView {
-
+   @Inject
+    lateinit var mArticlePresenter: ArticlePresenter
     private var mRecyclerView: RecyclerView? = null
     private var mArticleAdapter: ArticleAdapter? = null
-    private var mArticlePresenter: ArticlePresenter? = null
 
     override fun initView() {
         mRecyclerView = find(R.id.recycle_view)
@@ -23,13 +25,15 @@ class MainActivity : BaseActivity(R.layout.activity_main), ArticleView {
 
     override fun initData() {
         initToolbar(com.example.komoriwu.kotlintest.R.string.app_name)
-        mArticlePresenter = ArticlePresenterImpl(this, this)
-        mArticlePresenter?.loaderArticle("1", "8")
         mRecyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.
                 VERTICAL, false)
-        mArticleAdapter=ArticleAdapter()
-        mRecyclerView?.adapter =  mArticleAdapter
+        mArticleAdapter = ArticleAdapter()
+        mRecyclerView?.adapter = mArticleAdapter
 
+        DaggerArticleComponent.builder().articleModule(ArticleModule(this, this))
+                .build().inject(this)
+//        mArticlePresenter = ArticlePresenterImpl(this, this)
+        mArticlePresenter.loaderArticle("1", "8")
     }
 
     override fun addArticleList(articleBody: ArticleBody?) {
