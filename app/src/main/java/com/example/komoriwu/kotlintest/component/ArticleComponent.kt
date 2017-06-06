@@ -1,8 +1,6 @@
 package com.example.komoriwu.kotlintest.component
 
-import android.content.Context
 import com.example.komoriwu.kotlintest.article.MainActivity
-import com.example.komoriwu.kotlintest.article.view.ArticleView
 import com.example.komoriwu.kotlintest.module.ArticleModule
 import dagger.Component
 

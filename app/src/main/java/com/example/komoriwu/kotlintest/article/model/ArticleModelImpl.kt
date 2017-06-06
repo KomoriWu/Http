@@ -16,6 +16,7 @@ class ArticleModelImpl : ArticleModel {
 
     override fun loaderArticle(context: Context, page: String, size: String,
                                onLoadListListener: OnLoadListListener) {
+
         val articleApi: ArticleApi = ArticleApi(context as RxAppCompatActivity, page, size, object :
                 HttpOnNextListener<ArticleBody>() {
             override fun onNext(t: ArticleBody?) {
@@ -26,6 +27,7 @@ class ArticleModelImpl : ArticleModel {
                 onLoadListListener.onFail(e);
             }
         })
+        //采用已经封装完毕的RX+Retrofit框架
         HttpManager.getInstance().doHttpDeal(articleApi)
     }
 

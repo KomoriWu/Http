@@ -21,7 +21,7 @@ class ArticleAdapter : Adapter<ArticleAdapter.ArticleViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = articleList!!.size
+    override fun getItemCount(): Int = if (articleList == null) 0 else articleList!!.size
 
     override fun onBindViewHolder(holder: ArticleViewHolder?, position: Int) {
         articleList?.get(position)?.let { holder?.bindData(it) }

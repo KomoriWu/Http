@@ -20,6 +20,12 @@ android {
         }
     }
 }
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 //为Dagger创建了需要的自生成类
 kapt {
     generateStubs = true
@@ -40,5 +46,5 @@ dependencies {
     compile "com.google.dagger:dagger:2.10"
     kapt "com.google.dagger:dagger-compiler:2.10"
 
-    compile project(':http')
+    compile 'com.github.KomoriWu:Http:v1.0.0'
 }

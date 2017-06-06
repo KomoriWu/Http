@@ -27,15 +27,17 @@ public class ArticleApi extends BaseApi {
         super(rxAppCompatActivity, listener,BASE_URL);
         this.mPage = page;
         this.mSize = size;
+        //是否显示加载框
         setShowProgress(false);
     }
 
+    //提供请求所需字段的数据
     @Override
     public Observable getObservable(Retrofit retrofit) {
         Map<String, String> map = new HashMap<>();
         map.put("page", mPage);
         map.put("size", mSize);
         HttpService service = retrofit.create(HttpService.class);
-        return service.getAllArticles(map);
+        return service.getAllArticles(map);//传数据到HttpService
     }
 }

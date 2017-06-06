@@ -14,7 +14,7 @@ import org.jetbrains.anko.find
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(R.layout.activity_main), ArticleView {
-   @Inject
+    @Inject
     lateinit var mArticlePresenter: ArticlePresenter
     private var mRecyclerView: RecyclerView? = null
     private var mArticleAdapter: ArticleAdapter? = null

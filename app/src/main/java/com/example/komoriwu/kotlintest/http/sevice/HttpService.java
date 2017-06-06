@@ -1,7 +1,6 @@
 package com.example.komoriwu.kotlintest.http.sevice;
 
 
-import com.example.komoriwu.kotlintest.bean.Article;
 import com.example.komoriwu.kotlintest.bean.ArticleBody;
 
 import java.util.Map;
